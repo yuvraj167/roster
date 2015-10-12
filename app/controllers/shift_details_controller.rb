@@ -1,9 +1,10 @@
 class ShiftDetailsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_shift_detail, only: [:show, :edit, :update, :destroy]
 
   # GET /shift_details
   def index
-    @shift_details = ShiftDetail.all
+    @shift_details = ShiftDetail.where(user: current_user)
   end
 
   # GET /shift_details/1
@@ -22,9 +23,13 @@ class ShiftDetailsController < ApplicationController
   # POST /shift_details
   def create
     @shift_detail = ShiftDetail.new(shift_detail_params)
+    @shift_detail.user= current_user
 
     if @shift_detail.save
-      redirect_to @shift_detail, notice: 'Shift detail was successfully created.'
+      respond_to do |format|
+       format.js {redirect_to @shift_detail, notice: 'Shift detail was successfully created.'}  
+       format.html {redirect_to @shift_detail, notice: 'Shift detail was successfully created.'}
+    end
     else
       render :new
     end
