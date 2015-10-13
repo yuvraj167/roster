@@ -3,5 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-    has_one :shift_detail, inverse_of: :user,dependent: :destroy,dependent: :restrict_with_exception     
+    has_one :shift_detail, inverse_of: :user,dependent: :destroy,dependent: :restrict_with_exception   
+    searchable do 
+    	text :name
+    end  
 end
