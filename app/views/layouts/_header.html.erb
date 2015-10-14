@@ -1,9 +1,18 @@
-<div class="header">
-	<% if user_signed_in? %>
-			<h2><%= link_to 'Sign Out',destroy_user_session_path, method: :delete %></h2>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+  		<div class="navbar-header">
+	  		<li><%= link_to 'Roster', root_path, class: "navbar-brand"%></li>
+		</div>
+	  <ul class="nav navbar-nav navbar-right">
+		  <% if user_signed_in? %>
+		        <li><%= link_to 'Sign Out',destroy_user_session_path, method: :delete %></li>
+		  <% else %>
+				<li><%= link_to 'Log in', new_user_session_path,method: :get%></li>
+				<li><%= link_to 'Sign Up', new_user_registration_path,method: :get%></li>
+			<% end %>
+	   </ul>
+   </div>
+</nav>
 
-	<% else %>
-			<h2><%= link_to 'Log in', new_user_session_path,method: :get%></h2>
-			<h2><%= link_to 'Sign Up', new_user_registration_path,method: :get%></h2>
-	<% end %>
-</div>
+	
+			

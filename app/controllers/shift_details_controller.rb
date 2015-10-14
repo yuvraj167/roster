@@ -1,10 +1,14 @@
 class ShiftDetailsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:list]
   before_action :set_shift_detail, only: [:show, :edit, :update, :destroy]
-
+   skip_before_action :authenticate_user!,only: :list
   # GET /shift_details
   def index
     @shift_details = ShiftDetail.where(user: current_user)
+  end
+
+  def list
+    @shift_details = ShiftDetail.all
   end
 
   # GET /shift_details/1

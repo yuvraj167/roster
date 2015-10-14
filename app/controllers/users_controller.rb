@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!
+  load_and_authorize_resource
+  skip_before_action :authenticate_user!,only: :index
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -7,9 +8,9 @@ class UsersController < ApplicationController
   def index
    # @users = User.all
     @search = User.search do 
-      keywords params[:name]
+      fulltext(params[:search])
     end
-    @user = User.all
+    @user = @search.results
   end
 
   # GET /users/1

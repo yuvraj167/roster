@@ -4,6 +4,9 @@ class HomeController < ApplicationController
 
   def index
   	@user = User.all
+  	if user_signed_in? 
+  		@shift_details = current_user.shift_details
+  	end
   end
 
 

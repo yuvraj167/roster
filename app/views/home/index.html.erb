@@ -1,10 +1,10 @@
-<h1>Roster App </h1><br>
-	<% if user_signed_in? %>
-			<h2>Welcome <%= current_user.name%></h2>
-			<h2>Add your shift Details <%= link_to 'here',new_shift_detail_path%></h2>		
-	<% end %>
-
-
-<%= link_to 'USER DETAILS', root_path,remote: :true %>
-
+<% if user_signed_in? %>
+	<h2>Welcome <%= current_user.name%></h2>	
+	<%= render template: 'shift_details/index'%>	
+<% else %>
+	<%= link_to 'USER DETAILS', root_path,remote: :true %><br>
+	<%= link_to 'SHIFT DETAILS',shift_details_list_path,remote: :true %>
+<% end %>
+<br>
 <div id="display_user" style="display:none"></div>
+<div id="display_shifts" style="display:none"></div>
