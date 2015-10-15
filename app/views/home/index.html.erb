@@ -1,10 +1,23 @@
 <% if user_signed_in? %>
-	<h2>Welcome <%= current_user.name%></h2>	
-	<%= render template: 'shift_details/index'%>	
-<% else %>
-	<%= link_to 'USER DETAILS', root_path,remote: :true %><br>
-	<%= link_to 'SHIFT DETAILS',shift_details_list_path,remote: :true %>
+	<h1>Welcome <%= current_user.name%></h1><br>	
+		
+	<% if current_user.email == "yuvraj.167@gmail.com" %>
+		<%= link_to 'USER DETAILS', root_path,:class => "btn btn-default btn-lg btn-block",remote: :true %><br>
+		<%= link_to 'SHIFT DETAILS',shift_details_list_path,:class => "btn btn-default btn-lg btn-block",remote: :true %>
+	<% elsif %>
+		<%= render template: 'shift_details/index'%>
+	<% end%>
+	<% else %>
+	<div class="jumbotron">
+		<h1>Welcome to Roster App</h1><br>
+			<h4>Create account to Manage your team rosters</h4><br>
+			<div class="row" style="display:inline-block">
+			<%= button_to 'Log in', new_user_session_path,:class => "btn btn-lg btn-primary"%><br>
+			<%= button_to 'Sign up',new_user_registration_path,method: :get,:class => "btn btn-lg btn-primary"%><br>
+			</div>
+	</div>
 <% end %>
+
 <br>
-<div id="display_user" style="display:none"></div>
+<div id="display_user" style="display:none"></div><br>
 <div id="display_shifts" style="display:none"></div>

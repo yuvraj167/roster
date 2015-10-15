@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  skip_before_action :authenticate_user!,only: :index
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+   rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => exception.message
+   end 
   # GET /users
   # GET /users.json
   def index

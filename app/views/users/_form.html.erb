@@ -11,31 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name,class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :emp_id %><br>
-    <%= f.text_field :emp_id %>
+    <%= f.text_field :emp_id,class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :mobile_no %><br>
-    <%= f.text_field :mobile_no %>
+    <%= f.text_field :mobile_no,class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.email_field :email,class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.password_field :password,class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br>
-    <%= f.text_field :password_confirmation %>
+    <%= f.password_field :password_confirmation,class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit',class: 'btn btn-primary' %>
   </div>
 <% end %>
