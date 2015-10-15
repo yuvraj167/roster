@@ -1,7 +1,9 @@
 class ShiftDetailsController < ApplicationController
-  load_and_authorize_resource 
-  before_action :set_shift_detail, only: [:show, :edit, :update, :destroy]
+   load_and_authorize_resource :except => [:create]
+   before_action :set_shift_detail, only: [:show, :edit, :update, :destroy]
    skip_before_action :authenticate_user!,only: :list
+
+   
   # GET /shift_details
   def index
     if current_user.email == 'yuvraj.167@gmail.com'
@@ -38,7 +40,7 @@ class ShiftDetailsController < ApplicationController
       respond_to do |format|
        format.js {redirect_to @shift_detail, notice: 'Shift detail was successfully created.'}  
        format.html {redirect_to @shift_detail, notice: 'Shift detail was successfully created.'}
-    end
+    end  
     else
       render :new
     end
