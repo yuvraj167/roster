@@ -11,10 +11,7 @@
 	<div class="jumbotron">
 		<h1>Welcome to Roster App</h1><br>
 			<h4>Create account to Manage your team rosters</h4><br>
-			<div class="row" style="display:inline-block">
-			<%= button_to 'Log in', new_user_session_path,:class => "btn btn-lg btn-primary"%><br>
-			<%= button_to 'Sign up',new_user_registration_path,method: :get,:class => "btn btn-lg btn-primary"%><br>
-			</div>
+				<div style="float:middle"><%= button_to 'Sign up',new_user_registration_path,method: :get,:class => "btn btn-lg btn-primary"%></div><br>
 	</div>
 <% end %>
 

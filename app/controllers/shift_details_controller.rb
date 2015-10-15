@@ -30,8 +30,9 @@ class ShiftDetailsController < ApplicationController
   # POST /shift_details
   def create
     @shift_detail = ShiftDetail.new(shift_detail_params)
-    @shift_detail.user= current_user
-
+    if @shift_detail.user_id == nil
+       @shift_detail.user= current_user
+    end
     if @shift_detail.save
       respond_to do |format|
        format.js {redirect_to @shift_detail, notice: 'Shift detail was successfully created.'}  
