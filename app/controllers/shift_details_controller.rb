@@ -1,4 +1,5 @@
 class ShiftDetailsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_shift_detail, only: [:show, :edit, :update, :destroy]
    skip_before_action :authenticate_user!,only: :list
   # GET /shift_details

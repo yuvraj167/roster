@@ -8,7 +8,8 @@ class Ability
        if user.email == 'yuvraj.167@gmail.com'
          can :manage, :all
        else
-         can :read, :all
+         can [:edit,:update,:show], User, :id => user.id
+         can :manage, ShiftDetail, :user_id => user.id
        end
     #
     # The first argument to `can` is the action you are giving the user 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
    rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message

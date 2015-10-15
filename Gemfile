@@ -39,6 +39,11 @@ gem 'cancan'
 gem 'sunspot_rails'
 
 gem 'sunspot_solr'
+
+gem 'capistrano'
+gem 'capistrano-rails'
+
+gem 'passenger'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
